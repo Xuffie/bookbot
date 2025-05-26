@@ -1,10 +1,16 @@
+import sys
 from stats import word_counter
 from stats import letter_counter
 from stats import sort_letters
 
 # main function that gathers data
 def main(): 
-    book_path = "books/frankenstein.txt"
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    book_path = sys.argv[1]
+
     text = get_book_text(book_path)
     num_words = word_counter(text)
     char_dict = letter_counter(text)
